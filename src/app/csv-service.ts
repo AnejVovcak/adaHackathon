@@ -35,7 +35,7 @@ export class CsvService {
     // Implement your CSV parsing logic here
     // Assuming CSV format is something like "targetLabel,index"
     const rows = csvData.split('\n').map(row => {
-      const [Municipality, Population, CulturalAssociations, SportsAssociations, Playgrounds, Kindergartens, AvailablePlaces] = row.split(',');
+      const [Municipality, Population, CulturalAssociations, SportsAssociations, Playgrounds, Kindergartens, AvailablePlaces,Score] = row.split(',');
       return {
         Municipality,
         Population: parseInt(Population),
@@ -43,7 +43,8 @@ export class CsvService {
         SportsAssociations: parseInt(SportsAssociations),
         Playgrounds: parseInt(Playgrounds),
         Kindergartens: parseInt(Kindergartens),
-        AvailablePlaces: parseInt(AvailablePlaces)
+        AvailablePlaces: parseInt(AvailablePlaces),
+        Score: parseInt(Score)
       };
     });
 

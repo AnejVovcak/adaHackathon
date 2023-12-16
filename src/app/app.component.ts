@@ -1,4 +1,4 @@
-import {Component, ElementRef, Renderer2, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, ElementRef, OnInit, Renderer2, ViewChild} from '@angular/core';
 import {CsvService} from "./csv-service";
 import {Obcina} from "./obcina";
 
@@ -7,7 +7,7 @@ import {Obcina} from "./obcina";
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements AfterViewInit {
   title = 'adaHackathon';
 
   //in HTML i have SVG element with g element with ids like so: inkscape:label="Podčetrtek"
@@ -78,7 +78,7 @@ export class AppComponent {
     const mouseY = event.clientY;
 
     // Apply the position to the label
-    this.labelPosition = { top: mouseY, left: mouseX };
+    this.labelPosition = {top: mouseY, left: mouseX};
   }
 
   selectedObcina: Obcina | undefined;
@@ -87,6 +87,19 @@ export class AppComponent {
     this.csvService.getCsvObcine().subscribe(data => {
       this.clicked = true;
       this.selectedObcina = this.csvService.parseCsvObcine(data).find(obcina => obcina.Municipality === targetLabel)
+      if (this.selectedObcina == undefined) {
+        return;
+      }
+      let score = this.selectedObcina?.Score;
+      this.selectedObcina.Score = 0;
+      //increment score to see the animation
+      let interval = setInterval(() => {
+        this.selectedObcina!.Score += 1;
+        if (this.selectedObcina!.Score >= score) {
+          clearInterval(interval);
+        }
+      }, 30);
+
       console.log(this.csvService.parseCsvObcine(data))
     })
     console.log(`Clicked on ${targetLabel}`);

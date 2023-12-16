@@ -3,24 +3,36 @@
     Zemljevid
   </h1>
 
-  <div *ngIf="clicked" class="grid grid-cols-2 gap-2">
-    <div>Občina:</div>
-    <div>{{selectedObcina?.Municipality}}</div>
-    <div>Populacija:</div>
-    <div>{{selectedObcina?.Population}}</div>
-    <div>Število kulturnih društev:</div>
-    <div>{{selectedObcina?.CulturalAssociations}}</div>
-    <div>Število športnih društev:</div>
-    <div>{{selectedObcina?.SportsAssociations}}</div>
-    <div>Število igrišč:</div>
-    <div>{{selectedObcina?.Playgrounds}}</div>
-    <div>Število vrtcev:</div>
-    <div>{{selectedObcina?.AvailablePlaces}}/{{selectedObcina?.Kindergartens}}</div>
-    <div class="col-span-2" (click)="clicked=false">Zapri</div>
-  </div>
-
-  <div class="flex flex-col justify-center items-center">
-    <svg #yourSvg height="700px" xmlns="http://www.w3.org/2000/svg"
+  <div class="static flex flex-col justify-center items-center">
+    <div *ngIf="clicked" class="border-2 border-rose-500 p-3 bg-white absolute bottom-10 right-10 grid grid-cols-2 gap-2">
+      <div>Ocena:</div>
+      <div class="flex justify-end items-end">{{selectedObcina?.Score}}</div>
+      <div>Občina:</div>
+      <div class="flex justify-end items-end">{{selectedObcina?.Municipality}}</div>
+      <div>Populacija:</div>
+      <div class="flex justify-end items-end">{{selectedObcina?.Population}}</div>
+      <div>Število kulturnih društev:</div>
+      <div class="flex justify-end items-end">{{selectedObcina?.CulturalAssociations}}</div>
+      <div>Število športnih društev:</div>
+      <div class="flex justify-end items-end">{{selectedObcina?.SportsAssociations}}</div>
+      <div>Število igrišč:</div>
+      <div class="flex justify-end items-end">
+        {{selectedObcina?.Playgrounds}}
+      </div>
+      <div>Število vrtcev:</div>
+      <div class="flex justify-end items-end">
+        {{selectedObcina?.AvailablePlaces}}/{{selectedObcina?.Kindergartens}}
+      </div>
+      <div></div>
+      <div (click)="clicked=false" class="cursor-pointer flex justify-end items-end">
+        <span>Zapri</span>
+      </div>
+    </div>
+    <div *ngIf="currentLabelOnHover" class="label-overlay" [style.top.px]="labelPosition?.top"
+         [style.left.px]="labelPosition?.left">
+      <p>{{ currentLabelOnHover }}</p>
+    </div>
+    <svg #yourSvg height="700px" width="100%" xmlns="http://www.w3.org/2000/svg"
          xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
          viewBox="0 0 1380 877" fill="#ffffff" stroke="black">
       <g inkscape:label="Podčetrtek" fill="#ffffff">
@@ -874,10 +886,5 @@
           d="M 625,821 L 630,810 L 627,806 L 629,805 L 628,804 L 636,801 L 643,804 L 645,807 L 656,811 L 656,809 L 659,809 L 661,805 L 669,804 L 680,814 L 680,817 L 667,807 L 663,808 L 660,813 L 661,822 L 659,824 L 661,828 L 658,831 L 659,835 L 657,838 L 650,838 L 643,841 L 641,844 L 637,844 L 620,848 L 618,841 L 614,837 L 614,832 L 611,829 L 613,826 L 610,822 L 607,824 L 609,821 L 609,812 L 610,812 L 613,815 L 615,816 L 615,821 L 617,823 L 622,822 L 625,821 "/>
       </g>
     </svg>
-
-    <div *ngIf="currentLabelOnHover" class="label-overlay" [style.top.px]="labelPosition?.top"
-         [style.left.px]="labelPosition?.left">
-      <p>{{ currentLabelOnHover }}</p>
-    </div>
   </div>
 </div>

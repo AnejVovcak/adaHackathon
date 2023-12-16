@@ -6,4 +6,5 @@ export interface Obcina{
   Playgrounds: number,
   Kindergartens: number,
   AvailablePlaces: number
+  Score: number
 }
