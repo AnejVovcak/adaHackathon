@@ -1,5 +1,6 @@
 import {Component, ElementRef, Renderer2, ViewChild} from '@angular/core';
 import {CsvService} from "./csv-service";
+import {Obcina} from "./obcina";
 
 @Component({
   selector: 'app-root',
@@ -15,13 +16,14 @@ export class AppComponent {
 
   currentLabelOnHover: string | null = null;
   labelPosition: { top: number, left: number } | null = null;
+  clicked = false;
 
   constructor(private renderer: Renderer2, private csvService: CsvService) {
   }
 
   ngAfterViewInit(): void {
     this.csvService.getCsvData().subscribe(data => {
-      const rows = this.parseCsvData(data);
+      const rows = this.csvService.parseCsvData(data);
       this.applyHeatmapColors(rows);
     });
   }
@@ -61,6 +63,11 @@ export class AppComponent {
           this.currentLabelOnHover = null;
           this.labelPosition = null;
         });
+
+        // Add event listener for click
+        this.renderer.listen(gElement, 'click', (event) => {
+          this.handleGElementClick(targetLabel);
+        });
       }
     });
   }
@@ -74,16 +81,15 @@ export class AppComponent {
     this.labelPosition = { top: mouseY, left: mouseX };
   }
 
-
-  private parseCsvData(csvData: string): { targetLabel: string, index: number }[] {
-    // Implement your CSV parsing logic here
-    // Assuming CSV format is something like "targetLabel,index"
-    const rows = csvData.split('\n').map(row => {
-      const [targetLabel, indexStr] = row.split(',');
-      return {targetLabel, index: parseFloat(indexStr)};
-    });
-
-    return rows;
+  selectedObcina: Obcina | undefined;
+  private handleGElementClick(targetLabel: string): void {
+    // Handle the click event for the g element with the specified targetLabel
+    this.csvService.getCsvObcine().subscribe(data => {
+      this.clicked = true;
+      this.selectedObcina = this.csvService.parseCsvObcine(data).find(obcina => obcina.Municipality === targetLabel)
+      console.log(this.csvService.parseCsvObcine(data))
+    })
+    console.log(`Clicked on ${targetLabel}`);
   }
 
 }

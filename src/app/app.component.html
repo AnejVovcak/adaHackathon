@@ -2,8 +2,26 @@
   <h1 class="text-3xl font-bold underline">
     Zemljevid
   </h1>
+
+  <div *ngIf="clicked" class="grid grid-cols-2 gap-2">
+    <div>Občina:</div>
+    <div>{{selectedObcina?.Municipality}}</div>
+    <div>Populacija:</div>
+    <div>{{selectedObcina?.Population}}</div>
+    <div>Število kulturnih društev:</div>
+    <div>{{selectedObcina?.CulturalAssociations}}</div>
+    <div>Število športnih društev:</div>
+    <div>{{selectedObcina?.SportsAssociations}}</div>
+    <div>Število igrišč:</div>
+    <div>{{selectedObcina?.Playgrounds}}</div>
+    <div>Število vrtcev:</div>
+    <div>{{selectedObcina?.AvailablePlaces}}/{{selectedObcina?.Kindergartens}}</div>
+    <div class="col-span-2" (click)="clicked=false">Zapri</div>
+  </div>
+
   <div class="flex flex-col justify-center items-center">
-    <svg #yourSvg height="700px" xmlns="http://www.w3.org/2000/svg" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+    <svg #yourSvg height="700px" xmlns="http://www.w3.org/2000/svg"
+         xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
          viewBox="0 0 1380 877" fill="#ffffff" stroke="black">
       <g inkscape:label="Podčetrtek" fill="#ffffff">
         <path
@@ -857,7 +875,8 @@
       </g>
     </svg>
 
-    <div *ngIf="currentLabelOnHover" class="label-overlay" [style.top.px]="labelPosition?.top" [style.left.px]="labelPosition?.left">
+    <div *ngIf="currentLabelOnHover" class="label-overlay" [style.top.px]="labelPosition?.top"
+         [style.left.px]="labelPosition?.left">
       <p>{{ currentLabelOnHover }}</p>
     </div>
   </div>
