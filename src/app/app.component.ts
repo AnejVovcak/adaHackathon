@@ -25,10 +25,10 @@ export class AppComponent implements AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    this.csvService.getCsvData().subscribe(data => {
-      const rows = this.csvService.parseCsvData(data);
-      this.applyHeatmapColors(rows);
-    });
+    // this.csvService.getCsvData().subscribe(data => {
+    //   const rows = this.csvService.parseCsvData(data);
+    //   this.applyHeatmapColors(rows);
+    // });
   }
 
   private calculateHeatmapColor(index: number): string {

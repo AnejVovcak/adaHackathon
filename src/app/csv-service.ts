@@ -21,21 +21,39 @@ export class CsvService {
   }
 
   parseCsvData(csvData: string): { targetLabel: string, index: number }[] {
-    // Implement your CSV parsing logic here
-    // Assuming CSV format is something like "targetLabel,index"
-    const rows = csvData.split('\n').map(row => {
-      const [targetLabel, indexStr] = row.split(',');
+    return csvData.split('\n').map(row => {
+      const [targetLabel, surplus, income, ratio, indexStr] = row.split(',');
       return {targetLabel, index: parseFloat(indexStr)};
     });
+  }
 
-    return rows;
+  parseIncome(csvData: string): { targetLabel: string, index: number }[] {
+    return csvData.split('\n').map(row => {
+      const [targetLabel, surplus, income, ratio, indexStr] = row.split(',');
+      console.log(targetLabel, surplus, income, ratio, indexStr);
+      return {targetLabel, index: parseFloat(income)};
+    });
+  }
+
+  parseSurplus(csvData: string): { targetLabel: string, index: number }[] {
+    return csvData.split('\n').map(row => {
+      const [targetLabel, surplus, income, ratio, indexStr] = row.split(',');
+      return {targetLabel, index: parseFloat(surplus)};
+    });
+  }
+
+  parseRatio(csvData: string): { targetLabel: string, index: number }[] {
+    return csvData.split('\n').map(row => {
+      const [targetLabel, surplus, income, ratio, indexStr] = row.split(',');
+      return {targetLabel, index: parseFloat(ratio)};
+    });
   }
 
   parseCsvObcine(csvData: string): Obcina[] {
     // Implement your CSV parsing logic here
     // Assuming CSV format is something like "targetLabel,index"
     const rows = csvData.split('\n').map(row => {
-      const [Municipality, Population, CulturalAssociations, SportsAssociations, Playgrounds, Kindergartens, AvailablePlaces,Score] = row.split(',');
+      const [Municipality, Population, CulturalAssociations, SportsAssociations, Playgrounds, Kindergartens, AvailablePlaces, Score] = row.split(',');
       return {
         Municipality,
         Population: parseInt(Population),

@@ -26,6 +26,27 @@ export class MainPageComponent {
     });
   }
 
+  selectIncome() {
+    this.csvService.getCsvData().subscribe(data => {
+      const rows = this.csvService.parseIncome(data);
+      this.applyHeatmapColors(rows);
+    });
+  }
+
+  selectSurplus() {
+    this.csvService.getCsvData().subscribe(data => {
+      const rows = this.csvService.parseSurplus(data);
+      this.applyHeatmapColors(rows);
+    });
+  }
+
+  selectRatio() {
+    this.csvService.getCsvData().subscribe(data => {
+      const rows = this.csvService.parseRatio(data);
+      this.applyHeatmapColors(rows);
+    });
+  }
+
   private calculateHeatmapColor(index: number): string {
     // Implement your logic to map index to a color (e.g., using a gradient scale)
     // For simplicity, let's use a basic example (green to red gradient)
