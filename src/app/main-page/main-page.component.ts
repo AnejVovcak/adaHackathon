@@ -1,19 +1,14 @@
-import {AfterViewInit, Component, ElementRef, OnInit, Renderer2, ViewChild} from '@angular/core';
-import {CsvService} from "./csv-service";
-import {Obcina} from "./obcina";
-import {RouterOutlet} from "@angular/router";
-import {routeTransitionAnimations} from "./route-transition-animations";
+import {Component, ElementRef, Renderer2, ViewChild} from '@angular/core';
+import {CsvService} from "../csv-service";
+import {Obcina} from "../obcina";
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css'],
-  animations: [routeTransitionAnimations]
+  selector: 'app-main-page',
+  templateUrl: './main-page.component.html',
+  styleUrls: ['./main-page.component.css']
 })
-export class AppComponent implements AfterViewInit {
-  title = 'adaHackathon';
-
-  //in HTML i have SVG element with g element with ids like so: inkscape:label="Podčetrtek"
+export class MainPageComponent {
+//in HTML i have SVG element with g element with ids like so: inkscape:label="Podčetrtek"
 
   @ViewChild('yourSvg') svgElement!: ElementRef;
 
@@ -106,10 +101,6 @@ export class AppComponent implements AfterViewInit {
       console.log(this.csvService.parseCsvObcine(data))
     })
     console.log(`Clicked on ${targetLabel}`);
-  }
-
-  prepareRoute(outlet: RouterOutlet): boolean {
-    return outlet && outlet.activatedRouteData && outlet.activatedRouteData['animationState'];
   }
 
 }
