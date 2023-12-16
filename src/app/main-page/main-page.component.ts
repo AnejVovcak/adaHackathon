@@ -48,6 +48,13 @@ export class MainPageComponent {
     });
   }
 
+  selectCrime() {
+    this.csvService.getCsvData().subscribe(data => {
+      const rows = this.csvService.parseCrime(data);
+      this.applyHeatmapColors(rows);
+    });
+  }
+
   private calculateHeatmapColor(index: number): string {
     // Implement your logic to map index to a color (e.g., using a gradient scale)
     // For simplicity, let's use a basic example (green to red gradient)

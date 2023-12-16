@@ -22,14 +22,14 @@ export class CsvService {
 
   parseCsvData(csvData: string): { targetLabel: string, index: number }[] {
     return csvData.split('\n').map(row => {
-      const [targetLabel, surplus, income, ratio, indexStr] = row.split(',');
+      const [targetLabel, surplus, income, ratio,crime, indexStr] = row.split(',');
       return {targetLabel, index: parseFloat(indexStr)};
     });
   }
 
   parseIncome(csvData: string): { targetLabel: string, index: number }[] {
     return csvData.split('\n').map(row => {
-      const [targetLabel, surplus, income, ratio, indexStr] = row.split(',');
+      const [targetLabel, surplus, income, ratio,crime, indexStr] = row.split(',');
       console.log(targetLabel, surplus, income, ratio, indexStr);
       return {targetLabel, index: parseFloat(income)};
     });
@@ -37,15 +37,22 @@ export class CsvService {
 
   parseSurplus(csvData: string): { targetLabel: string, index: number }[] {
     return csvData.split('\n').map(row => {
-      const [targetLabel, surplus, income, ratio, indexStr] = row.split(',');
+      const [targetLabel, surplus, income, ratio,crime, indexStr] = row.split(',');
       return {targetLabel, index: parseFloat(surplus)};
     });
   }
 
   parseRatio(csvData: string): { targetLabel: string, index: number }[] {
     return csvData.split('\n').map(row => {
-      const [targetLabel, surplus, income, ratio, indexStr] = row.split(',');
+      const [targetLabel, surplus, income, ratio,crime, indexStr] = row.split(',');
       return {targetLabel, index: parseFloat(ratio)};
+    });
+  }
+
+  parseCrime(csvData: string): { targetLabel: string, index: number }[] {
+    return csvData.split('\n').map(row => {
+      const [targetLabel, surplus, income, ratio,crime, indexStr] = row.split(',');
+      return {targetLabel, index: parseFloat(crime)};
     });
   }
 

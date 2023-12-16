@@ -4,13 +4,14 @@ import pandas as pd
 dataset1 = pd.read_csv('gibanje_prebivalstva_clean.csv', sep=',')
 dataset2 = pd.read_csv('bruto_prejeti_dohodek_clean.csv', sep=',')
 dataset3 = pd.read_csv('starostne_skupine_clean.csv', sep=',')
+dataset4 = pd.read_csv('kriminaliteta_clean.csv', sep=',')
 
 # every dataset has the same number of rows, first column is the same in every dataset
 #second column is a number between 0 and 1
-print(len(dataset1), len(dataset2), len(dataset3))
+print(len(dataset1), len(dataset2), len(dataset3), len(dataset4))
 
 #merge the datasets into one by appending the second column of every dataset to the first one, but keep only the first column of the first dataset
-dataset = pd.concat([dataset1.iloc[:, 0], dataset1.iloc[:, 1], dataset2.iloc[:, 1], dataset3.iloc[:, 1]], axis=1)
+dataset = pd.concat([dataset1.iloc[:, 0], dataset1.iloc[:, 1], dataset2.iloc[:, 1], dataset3.iloc[:, 1], dataset4.iloc[:, 1]], axis=1)
 
 print(dataset.head())
 

@@ -23,7 +23,7 @@
       <div class="justify-start" (click)="ngAfterViewInit()">
         <input [defaultChecked]="true" type="radio" id="index" name="filterSelect" value="index"
                (click)="ngAfterViewInit()">
-        Indeks
+        Optidom indeks
       </div>
       <div class="justify-start">
         <input type="radio" id="income" name="filterSelect" value="icome" (click)="selectIncome()">
@@ -36,6 +36,10 @@
       <div class="justify-start">
         <input type="radio" id="ratio" name="filterSelect" value="ratio" (click)="selectRatio()">
         Delež mladih
+      </div>
+      <div class="justify-start">
+        <input type="radio" id="crime" name="filterSelect" value="unemployment" (click)="selectCrime()">
+        Kriminaliteta
       </div>
     </div>
     <div class="gap-y-8 border-2 drop-shadow-lg p-3">
@@ -82,8 +86,8 @@
 
 
   <div *ngIf="clicked" class="border-2 drop-shadow-lg p-3 bg-white absolute bottom-12 right-10 grid grid-cols-2 gap-2">
-    <div class="flex text-lg font-bold">{{selectedObcina?.Municipality}}</div>
-    <div class="flex justify-end items-end text-lg font-bold" id="score">{{selectedObcina?.Score}}</div>
+    <div class="flex text-xl font-bold">{{selectedObcina?.Municipality}}</div>
+    <div class="flex justify-end items-end text-xl font-bold" id="score">{{selectedObcina?.Score}}</div>
     <div>Populacija:</div>
     <div class="flex justify-end items-end">{{selectedObcina?.Population}}</div>
     <div>Število kulturnih društev:</div>
