@@ -17,70 +17,73 @@
       <path class="cls-1" d="M118.11,51"/>
     </svg>
   </div>
-  <div class="absolute left-10 top-20 border-2 drop-shadow-lg p-3 bg-white">
-    <div class="justify-start" (click)="ngAfterViewInit()">
-      Prikaži indeks
-      <input [defaultChecked]="true" type="radio" id="index" name="filterSelect" value="index"
-             (click)="ngAfterViewInit()">
+
+  <div class="bg-white absolute bottom-12 left-10 gap-y-8">
+    <div class="p-3 min-w-[13rem] border-2 drop-shadow-lg mb-10">
+      <div class="justify-start" (click)="ngAfterViewInit()">
+        <input [defaultChecked]="true" type="radio" id="index" name="filterSelect" value="index"
+               (click)="ngAfterViewInit()">
+        Indeks
+      </div>
+      <div class="justify-start">
+        <input type="radio" id="income" name="filterSelect" value="icome" (click)="selectIncome()">
+        Prihodek
+      </div>
+      <div class="justify-start">
+        <input type="radio" id="surplus" name="filterSelect" value="surplus" (click)="selectSurplus()">
+        Naravni prirast
+      </div>
+      <div class="justify-start">
+        <input type="radio" id="ratio" name="filterSelect" value="ratio" (click)="selectRatio()">
+        Delež mladih
+      </div>
     </div>
-    <div class="justify-start">
-      Indeksiraj po prihodku
-      <input type="radio" id="income" name="filterSelect" value="icome" (click)="selectIncome()">
-    </div>
-    <div class="justify-start">
-      Indeksiraj po naravnem prirastku
-      <input type="radio" id="surplus" name="filterSelect" value="surplus" (click)="selectSurplus()">
-    </div>
-    <div class="justify-start">
-      Indeksiraj po deležu mladih
-      <input type="radio" id="ratio" name="filterSelect" value="ratio" (click)="selectRatio()">
+    <div class="gap-y-8 border-2 drop-shadow-lg p-3">
+      <div class="pb-5">Legenda kvalitete življenja</div>
+      <div class="grid grid-rows-3 grid-flow-col gap-2">
+        <div class="row-span-3">
+          <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="46px"
+               height="319px"
+               style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd">
+            <g>
+              <path style="opacity:1" fill="#7cde63"
+                    d="M -0.5,-0.5 C 14.8333,-0.5 30.1667,-0.5 45.5,-0.5C 45.5,19.5 45.5,39.5 45.5,59.5C 30.1667,59.5 14.8333,59.5 -0.5,59.5C -0.5,39.5 -0.5,19.5 -0.5,-0.5 Z"/>
+            </g>
+            <g>
+              <path style="opacity:1" fill="#bfde84"
+                    d="M -0.5,59.5 C 14.8333,59.5 30.1667,59.5 45.5,59.5C 45.5,81.8333 45.5,104.167 45.5,126.5C 30.1667,126.5 14.8333,126.5 -0.5,126.5C -0.5,104.167 -0.5,81.8333 -0.5,59.5 Z"/>
+            </g>
+            <g>
+              <path style="opacity:1" fill="#ddb885"
+                    d="M -0.5,126.5 C 14.8333,126.5 30.1667,126.5 45.5,126.5C 45.5,148.833 45.5,171.167 45.5,193.5C 30.1667,193.5 14.8333,193.5 -0.5,193.5C -0.5,171.167 -0.5,148.833 -0.5,126.5 Z"/>
+            </g>
+            <g>
+              <path style="opacity:1" fill="#da6b78"
+                    d="M -0.5,193.5 C 14.8333,193.5 30.1667,193.5 45.5,193.5C 45.5,215.833 45.5,238.167 45.5,260.5C 30.1667,260.5 14.8333,260.5 -0.5,260.5C -0.5,238.167 -0.5,215.833 -0.5,193.5 Z"/>
+            </g>
+            <g>
+              <path style="opacity:1" fill="#ec4c6d"
+                    d="M -0.5,260.5 C 14.8333,260.5 30.1667,260.5 45.5,260.5C 45.5,279.833 45.5,299.167 45.5,318.5C 30.1667,318.5 14.8333,318.5 -0.5,318.5C -0.5,299.167 -0.5,279.833 -0.5,260.5 Z"/>
+            </g>
+          </svg>
+        </div>
+        <div class="items-top flex">
+          Nadpovprečno
+        </div>
+        <div class="items-center flex">
+          Povprečno
+        </div>
+        <div class="items-end flex">
+          Podpovprečno
+        </div>
+      </div>
     </div>
   </div>
 
-  <div class="border-2 drop-shadow-lg p-3 bg-white absolute bottom-12 left-10 gap-y-8">
-    <div class="pb-5">Legenda kvalitete življenja</div>
-    <div class="grid grid-rows-3 grid-flow-col gap-2">
-      <div class="row-span-3">
-        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="46px"
-             height="319px"
-             style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd">
-          <g>
-            <path style="opacity:1" fill="#7cde63"
-                  d="M -0.5,-0.5 C 14.8333,-0.5 30.1667,-0.5 45.5,-0.5C 45.5,19.5 45.5,39.5 45.5,59.5C 30.1667,59.5 14.8333,59.5 -0.5,59.5C -0.5,39.5 -0.5,19.5 -0.5,-0.5 Z"/>
-          </g>
-          <g>
-            <path style="opacity:1" fill="#bfde84"
-                  d="M -0.5,59.5 C 14.8333,59.5 30.1667,59.5 45.5,59.5C 45.5,81.8333 45.5,104.167 45.5,126.5C 30.1667,126.5 14.8333,126.5 -0.5,126.5C -0.5,104.167 -0.5,81.8333 -0.5,59.5 Z"/>
-          </g>
-          <g>
-            <path style="opacity:1" fill="#ddb885"
-                  d="M -0.5,126.5 C 14.8333,126.5 30.1667,126.5 45.5,126.5C 45.5,148.833 45.5,171.167 45.5,193.5C 30.1667,193.5 14.8333,193.5 -0.5,193.5C -0.5,171.167 -0.5,148.833 -0.5,126.5 Z"/>
-          </g>
-          <g>
-            <path style="opacity:1" fill="#da6b78"
-                  d="M -0.5,193.5 C 14.8333,193.5 30.1667,193.5 45.5,193.5C 45.5,215.833 45.5,238.167 45.5,260.5C 30.1667,260.5 14.8333,260.5 -0.5,260.5C -0.5,238.167 -0.5,215.833 -0.5,193.5 Z"/>
-          </g>
-          <g>
-            <path style="opacity:1" fill="#ec4c6d"
-                  d="M -0.5,260.5 C 14.8333,260.5 30.1667,260.5 45.5,260.5C 45.5,279.833 45.5,299.167 45.5,318.5C 30.1667,318.5 14.8333,318.5 -0.5,318.5C -0.5,299.167 -0.5,279.833 -0.5,260.5 Z"/>
-          </g>
-        </svg>
-      </div>
-      <div class="items-top flex">
-        Nadpovprečno
-      </div>
-      <div class="items-center flex">
-        Povprečno
-      </div>
-      <div class="items-end flex">
-        Podpovprečno
-      </div>
-    </div>
-  </div>
 
   <div *ngIf="clicked" class="border-2 drop-shadow-lg p-3 bg-white absolute bottom-12 right-10 grid grid-cols-2 gap-2">
     <div class="flex text-lg font-bold">{{selectedObcina?.Municipality}}</div>
-    <div class="flex justify-end items-end text-lg font-bold">{{selectedObcina?.Score}}</div>
+    <div class="flex justify-end items-end text-lg font-bold" id="score">{{selectedObcina?.Score}}</div>
     <div>Populacija:</div>
     <div class="flex justify-end items-end">{{selectedObcina?.Population}}</div>
     <div>Število kulturnih društev:</div>

@@ -129,6 +129,11 @@ export class MainPageComponent {
       //increment score to see the animation
       let interval = setInterval(() => {
         this.selectedObcina!.Score += 1;
+        //set color of div with class score to color of heatmap
+        console.log(this.selectedObcina!.Score/100)
+        console.log(this.calculateHeatmapColor(this.selectedObcina!.Score))
+        document.getElementById("score")!.style.color = this.calculateHeatmapColor(this.selectedObcina!.Score/100)
+
         if (this.selectedObcina!.Score >= score) {
           clearInterval(interval);
         }
