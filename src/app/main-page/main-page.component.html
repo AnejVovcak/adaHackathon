@@ -1,6 +1,6 @@
 <div class="static flex flex-col">
   <div class="flex justify-center items-center">
-    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="340" height="130"
+    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="390" height="140"
          viewBox="0 0 1376 400">
       <defs>
         <style>
@@ -17,20 +17,27 @@
       <path class="cls-1" d="M118.11,51"/>
     </svg>
   </div>
-  <div>
+  <div class="absolute left-10 top-20 border-2 drop-shadow-lg p-3 bg-white">
+    <div class="justify-start" (click)="ngAfterViewInit()">
+      Prikaži indeks
+      <input [defaultChecked]="true" type="radio" id="index" name="filterSelect" value="index"
+             (click)="ngAfterViewInit()">
+    </div>
     <div class="justify-start">
       Indeksiraj po prihodku
-      <input type="radio" (click)="selectIncome()">
+      <input type="radio" id="income" name="filterSelect" value="icome" (click)="selectIncome()">
     </div>
-    <div (click)="selectSurplus()" class="justify-start">
+    <div class="justify-start">
       Indeksiraj po naravnem prirastku
+      <input type="radio" id="surplus" name="filterSelect" value="surplus" (click)="selectSurplus()">
     </div>
-    <div (click)="selectRatio()" class="justify-start">
+    <div class="justify-start">
       Indeksiraj po deležu mladih
+      <input type="radio" id="ratio" name="filterSelect" value="ratio" (click)="selectRatio()">
     </div>
   </div>
 
-  <div class="border-2 border-rose-500 p-3 bg-white absolute bottom-10 left-10 gap-y-8">
+  <div class="border-2 drop-shadow-lg p-3 bg-white absolute bottom-12 left-10 gap-y-8">
     <div class="pb-5">Legenda kvalitete življenja</div>
     <div class="grid grid-rows-3 grid-flow-col gap-2">
       <div class="row-span-3">
@@ -71,11 +78,9 @@
     </div>
   </div>
 
-  <div *ngIf="clicked" class="border-2 border-rose-500 p-3 bg-white absolute bottom-10 right-10 grid grid-cols-2 gap-2">
-    <div>Ocena:</div>
-    <div class="flex justify-end items-end">{{selectedObcina?.Score}}</div>
-    <div>Občina:</div>
-    <div class="flex justify-end items-end">{{selectedObcina?.Municipality}}</div>
+  <div *ngIf="clicked" class="border-2 drop-shadow-lg p-3 bg-white absolute bottom-12 right-10 grid grid-cols-2 gap-2">
+    <div class="flex text-lg font-bold">{{selectedObcina?.Municipality}}</div>
+    <div class="flex justify-end items-end text-lg font-bold">{{selectedObcina?.Score}}</div>
     <div>Populacija:</div>
     <div class="flex justify-end items-end">{{selectedObcina?.Population}}</div>
     <div>Število kulturnih društev:</div>
@@ -95,7 +100,7 @@
       {{selectedObcina?.AvailablePlaces}}
     </div>
     <div></div>
-    <div (click)="clicked=false" class="cursor-pointer flex justify-end items-end">
+    <div (click)="onCloseDetails()" class="cursor-pointer flex justify-end items-end">
       <span>Zapri</span>
     </div>
   </div>
@@ -103,7 +108,7 @@
        [style.left.px]="labelPosition?.left">
     <p>{{ currentLabelOnHover }}</p>
   </div>
-  <svg #yourSvg height="560px" width="100%" xmlns="http://www.w3.org/2000/svg"
+  <svg #yourSvg height="590px" width="100%" xmlns="http://www.w3.org/2000/svg"
        xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
        viewBox="0 0 1380 877" fill="#ffffff" stroke="black">
     <g inkscape:label="Podčetrtek" fill="#ffffff">

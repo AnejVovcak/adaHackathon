@@ -20,6 +20,7 @@ export class MainPageComponent {
   }
 
   ngAfterViewInit(): void {
+    //set radio input to surplus
     this.csvService.getCsvData().subscribe(data => {
       const rows = this.csvService.parseCsvData(data);
       this.applyHeatmapColors(rows);
@@ -86,9 +87,23 @@ export class MainPageComponent {
         // Add event listener for click
         this.renderer.listen(gElement, 'click', (event) => {
           this.handleGElementClick(targetLabel);
+          //set border to clicked element
+          this.renderer.setStyle(gElement, 'stroke', 'black');
+          this.renderer.setStyle(gElement, 'stroke-width', '5');
         });
       }
     });
+  }
+
+  onCloseDetails() {
+    //remove border from clicked element
+    const gElement = this.svgElement.nativeElement.querySelector(`g[inkscape\\:label="${this.selectedObcina?.Municipality}"]`);
+    if (gElement) {
+      this.renderer.setStyle(gElement, 'stroke', 'black');
+      this.renderer.setStyle(gElement, 'stroke-width', '1');
+    }
+    this.clicked = false;
+    this.selectedObcina = undefined;
   }
 
   private calculateLabelPosition(event: MouseEvent): void {
