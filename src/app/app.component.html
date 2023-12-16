@@ -856,5 +856,9 @@
           d="M 625,821 L 630,810 L 627,806 L 629,805 L 628,804 L 636,801 L 643,804 L 645,807 L 656,811 L 656,809 L 659,809 L 661,805 L 669,804 L 680,814 L 680,817 L 667,807 L 663,808 L 660,813 L 661,822 L 659,824 L 661,828 L 658,831 L 659,835 L 657,838 L 650,838 L 643,841 L 641,844 L 637,844 L 620,848 L 618,841 L 614,837 L 614,832 L 611,829 L 613,826 L 610,822 L 607,824 L 609,821 L 609,812 L 610,812 L 613,815 L 615,816 L 615,821 L 617,823 L 622,822 L 625,821 "/>
       </g>
     </svg>
+
+    <div *ngIf="currentLabelOnHover" class="label-overlay" [style.top.px]="labelPosition?.top" [style.left.px]="labelPosition?.left">
+      <p>{{ currentLabelOnHover }}</p>
+    </div>
   </div>
 </div>

@@ -1,0 +1,8 @@
+.label-overlay {
+  position: absolute;
+  background-color: white; /* Adjust background color as needed */
+  border: 1px solid black; /* Add borders or customize as needed */
+  padding: 5px;
+  z-index: 1; /* Ensure the label is on top of the SVG */
+  pointer-events: none; /* Allow pointer events to go through the label */
+}

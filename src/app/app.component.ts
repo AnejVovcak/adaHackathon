@@ -7,31 +7,23 @@ import {CsvService} from "./csv-service";
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'adaHekaton';
+  title = 'adaHackathon';
 
   //in HTML i have SVG element with g element with ids like so: inkscape:label="Podčetrtek"
 
   @ViewChild('yourSvg') svgElement!: ElementRef;
 
+  currentLabelOnHover: string | null = null;
+  labelPosition: { top: number, left: number } | null = null;
+
   constructor(private renderer: Renderer2, private csvService: CsvService) {
   }
 
   ngAfterViewInit(): void {
-    const csvFilePath = 'assets/index.csv';
-    this.csvService.getCsvData(csvFilePath).subscribe(data => {
+    this.csvService.getCsvData().subscribe(data => {
       const rows = this.parseCsvData(data);
       this.applyHeatmapColors(rows);
     });
-    // Access and manipulate individual g elements here
-    const gElements = this.svgElement.nativeElement.querySelectorAll('g');
-
-    const targetLabel = 'Podčetrtek';
-    const gElement = this.svgElement.nativeElement.querySelector(`g[inkscape\\:label="${targetLabel}"]`);
-
-    if (gElement) {
-      // Change the color of the found g element
-      this.renderer.setStyle(gElement, 'fill', 'red');
-    }
   }
 
   private calculateHeatmapColor(index: number): string {
@@ -57,9 +49,31 @@ export class AppComponent {
 
         // Apply the color to the g element
         this.renderer.setStyle(gElement, 'fill', color);
+
+        // Add event listener for hover
+        this.renderer.listen(gElement, 'mouseover', (event) => {
+          this.currentLabelOnHover = targetLabel;
+          this.calculateLabelPosition(event);
+        });
+
+        // Add event listener for mouseout (optional, to clear the label when not hovering)
+        this.renderer.listen(gElement, 'mouseout', () => {
+          this.currentLabelOnHover = null;
+          this.labelPosition = null;
+        });
       }
     });
   }
+
+  private calculateLabelPosition(event: MouseEvent): void {
+    // Use clientX and clientY to get the mouse coordinates
+    const mouseX = event.clientX;
+    const mouseY = event.clientY;
+
+    // Apply the position to the label
+    this.labelPosition = { top: mouseY, left: mouseX };
+  }
+
 
   private parseCsvData(csvData: string): { targetLabel: string, index: number }[] {
     // Implement your CSV parsing logic here

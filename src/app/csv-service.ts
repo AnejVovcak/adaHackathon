@@ -7,7 +7,8 @@ export class CsvService{
 
   constructor(private http: HttpClient) {}
 
-  getCsvData(csvFilePath: string): Observable<any> {
-    return this.http.get(csvFilePath, { responseType: 'text' });
+  csvFilePath = 'assets/index.csv';
+  getCsvData(): Observable<any> {
+    return this.http.get(this.csvFilePath, { responseType: 'text' });
   }
 }
