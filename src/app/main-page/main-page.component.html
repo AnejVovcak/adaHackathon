@@ -18,8 +18,9 @@
     </svg>
   </div>
 
-  <div class="bg-white absolute bottom-12 left-10 gap-y-8">
-    <div class="p-3 min-w-[13rem] border-2 drop-shadow-lg mb-10">
+  <div class="absolute bottom-12 left-10 gap-y-8 bg-green-100">
+    <div class="p-3 min-w-[13rem] border-2 drop-shadow-lg mb-10 bg-white">
+      <div class="pb-5 font-bold">Izberi prikaz</div>
       <div class="justify-start" (click)="ngAfterViewInit()">
         <input [defaultChecked]="true" type="radio" id="index" name="filterSelect" value="index"
                (click)="ngAfterViewInit()">
@@ -42,8 +43,8 @@
         Kriminaliteta
       </div>
     </div>
-    <div class="gap-y-8 border-2 drop-shadow-lg p-3">
-      <div class="pb-5">Legenda kvalitete življenja</div>
+    <div class="gap-y-8 border-2 drop-shadow-lg p-3 bg-white">
+      <div class="pb-5 font-bold">Legenda kvalitete življenja</div>
       <div class="grid grid-rows-3 grid-flow-col gap-2">
         <div class="row-span-3">
           <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="46px"

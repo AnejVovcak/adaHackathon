@@ -5,10 +5,10 @@ import {MainPageComponent} from "./main-page/main-page.component";
 
 const routes: Routes = [
   {
-    path: '', component: FirstPageComponent,data: { animationState: 'One' }
+    path: '', component: FirstPageComponent
   },
   {
-    path: 'main', component: MainPageComponent, data: { animationState: 'Two' }
+    path: 'main', component: MainPageComponent
   },
   {
     path: '**',
